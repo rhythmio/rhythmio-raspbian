@@ -1,4 +1,4 @@
-rhythmio-raspbian
+Rhythm/io for Raspbian
 =================
 
-The scripts to build rhythm/io on raspbian.
+The scripts to build Rhythm/io on raspbian.
