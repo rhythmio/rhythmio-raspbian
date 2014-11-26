@@ -1,4 +1,5 @@
 Rhythm/io for Raspbian
 =================
 
-The scripts to build Rhythm/io on raspbian.
+This is a set of salt scripts to setup a music server on a standard raspbian
+image.

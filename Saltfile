@@ -1,0 +1,3 @@
+salt-ssh:
+  config_dir: ./salt/
+  max_prox: 30
