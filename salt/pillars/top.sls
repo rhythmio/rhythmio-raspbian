@@ -1,0 +1,6 @@
+
+base:
+  '*':
+    - raspberry
+    - audioserver
+    - fileserver

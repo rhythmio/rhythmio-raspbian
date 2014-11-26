@@ -62,3 +62,4 @@ remove_desktop:
 removing_packages:
   cmd.run:
     - name: "apt-get --assume-yes --purge autoremove"
+

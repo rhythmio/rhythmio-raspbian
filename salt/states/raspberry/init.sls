@@ -6,8 +6,16 @@
 # packages and remove unused packages, add users, etc
 #
 include:
-  - raspberry.cleanup
-  - raspberry.tools
+  - raspberry.apt.cleanup
+  - raspberry.apt.update
+  {% if salt['pillar.get']('raspberry:auto_upgrade_enabled', false) %}
+  - raspberry.apt.upgrade
+  {% endif %}
   - raspberry.users
 
-
+maintance_utils:
+  pkg.installed:
+    - pkgs:
+      - vim
+      - htop
+      - tree
