@@ -6,11 +6,15 @@
 # packages and remove unused packages, add users, etc
 #
 include:
-  - raspberry.apt.cleanup
-  - raspberry.apt.update
+  - raspberry.packages.cleanup
+  - raspberry.packages.update
   {% if salt['pillar.get']('raspberry:auto_upgrade_enabled', false) %}
-  - raspberry.apt.upgrade
+  - raspberry.packages.upgrade
   {% endif %}
+
+  - raspberry.firmware.update
+  - raspberry.firmware.modules
+
   - raspberry.users
 
 maintance_utils:
