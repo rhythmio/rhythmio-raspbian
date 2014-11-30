@@ -89,7 +89,7 @@ timeout: 5
 #loop_interval: 60
 
 # Set the default outputter used by the salt command. The default is "nested".
-output: nested
+output: highstate 
 
 # Return minions that timeout when running commands like test.ping
 show_timeout: True
@@ -328,7 +328,7 @@ jinja_lstrip_blocks: False
 # The state_verbose setting can be set to True or False, when set to False
 # all data that has a result of True and no changes will be suppressed.
 #state_verbose: True
-state_verbose: False
+state_verbose: True
 
 # The state_output setting changes if the output is the full multi line
 # output for each changed state if set to 'full', but if set to 'terse'
@@ -336,7 +336,7 @@ state_verbose: False
 # will be terse unless a state failed, in which case that output will be full.
 # If set to 'changes', the output will be full unless the state didn't change.
 #state_output: full
-state_output: mixed
+state_output: full
 
 
 #####      File Server settings      #####

@@ -1,6 +1,6 @@
 
 base:
   '*':
-    - raspberry
+    - raspbian
     - audioserver
     - fileserver

@@ -1,8 +1,3 @@
-volumio-pi:
-  host: 192.168.178.34
-  user: volumio
-  passwd: volumio
-  sudo: True
 
 raspbian-pi:
   host: 192.168.178.34
