@@ -1,0 +1,7 @@
+
+rpi3-raspbian-stretch:
+  host: raspberrypi
+  user: pi 
+  passwd: raspberry
+  sudo: True
+  tty: True
