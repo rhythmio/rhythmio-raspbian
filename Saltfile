@@ -1,4 +1,4 @@
 salt-ssh:
   config_dir: ./
-  #ssh_wipe: True
-  #refresh_cache: True
+  ssh_wipe: False
+  refresh_cache: False

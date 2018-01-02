@@ -1,11 +1,9 @@
 #
-# Prepare the system
+# Audio player
 # ==============================================================================
 #
-# TODO Manage the pi user
 #
 
 include:
-  - .hardware
-  - .raspbian
   - .base
+  - .alsa

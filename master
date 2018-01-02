@@ -95,7 +95,7 @@ jinja_lstrip_blocks: False
 #failhard: False
 
 state_verbose: False
-state_output: mixed
+state_output: terse
 
 #####      File Server settings      #####
 ##########################################
