@@ -124,7 +124,10 @@ file_ignore_regex:
 
 pillar_roots:
   base:
-    - pillars
+    - defaults
+    - settings
+
+#pillar_merge_lists: True
 
 # A master can cache pillars locally to bypass the expense of having to render them
 # for each minion on every request. This feature should only be enabled in cases
