@@ -154,7 +154,7 @@ key_logfile: log/key
 # ['garbage', 'trace', 'debug']
 
 # The level of messages to send to the console.
-log_level: warning
+log_level: info
 
 # The level of messages to send to the log file.
 log_level_logfile: warning

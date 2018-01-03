@@ -7,3 +7,4 @@
 include:
   - .base
   - .alsa
+  - .shairport-sync
