@@ -1,11 +1,5 @@
 #!/bin/sh
 
-echo "Current directory is ${PWD}"
-
-echo "Reset the repository and pull latest changes."
-git reset --hard;
-git pull;
-
 echo "Configuring the build ..."
 autoreconf -i -f
 ./configure \

@@ -95,7 +95,7 @@ jinja_lstrip_blocks: False
 #failhard: False
 
 state_verbose: False
-state_output: terse
+state_output: mixed
 
 #####      File Server settings      #####
 ##########################################
@@ -157,7 +157,7 @@ key_logfile: log/key
 # ['garbage', 'trace', 'debug']
 
 # The level of messages to send to the console.
-log_level: info
+log_level: warning
 
 # The level of messages to send to the log file.
 log_level_logfile: warning

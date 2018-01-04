@@ -7,9 +7,10 @@
 # 
 
 {% set shairportsync_build_path = salt['pillar.get']('audioplayer:shairportsync_build_path', "/tmp/shairport-sync") %}
-{% set shairport_settings = salt['pillar.get']('audioplayer:shairport_settings', {}) %}
+{% set force_shairportsync_build = salt['pillar.get']('audioplayer:force_shairportsync_build', False) %}
+{% set shairportsync_settings = salt['pillar.get']('audioplayer:shairport_settings', {}) %}
 
-audioplayer|install_shairport-sync_dependencies:
+audioplayer|install_shairportsync_dependencies:
   pkg.installed:
     - pkgs:
       - build-essential
@@ -27,11 +28,19 @@ audioplayer|install_shairport-sync_dependencies:
       - libssl-dev
       - libsoxr-dev
 
-audioplayer|clone_shairport-sync_source:
+audioplayer|shairportsync_sources:
   cmd.run:
-    - name: "git clone https://github.com/mikebrady/shairport-sync {{ shairportsync_build_path }}"
-    - creates:
-      - "{{ shairportsync_build_path }}"
+    - name: "cd {{ shairportsync_build_path}} && git checkout -f ."
+    - onlyif: "test -d {{ shairportsync_build_path }}"
+    - require:
+      - pkg: audioplayer|install_shairportsync_dependencies
+  git.latest:
+    - name: https://github.com/mikebrady/shairport-sync
+    - target: "{{ shairportsync_build_path }}"
+    - unless: "test -f /usr/local/bin/shairport-sync"
+    - require:
+      - pkg: audioplayer|install_shairportsync_dependencies
+      - cmd: audioplayer|shairportsync_sources
 
 audioplayer|build_shairportsync:
   cmd.script:
@@ -41,24 +50,21 @@ audioplayer|build_shairportsync:
     - creates:
       - "/usr/local/bin/shairport-sync"
     - require:
-      - pkg: audioplayer|install_shairport-sync_dependencies
-      - cmd: audioplayer|clone_shairport-sync_source
+      - pkg: audioplayer|install_shairportsync_dependencies
+      - git: audioplayer|shairportsync_sources
 
-audioplayer|shairport-sync:
+audioplayer|shairportsync:
   file.managed:
     - name: "/etc/shairport-sync.conf"
     - source: "salt://audioplayer/files/shairport-sync.conf"
     - template: jinja
     - context:
-        name: "{{ shairport_settings.name|default('%h') }}"
-        password: "{{ shairport_settings.password|default('') }}"
-        ignore_volume: {{ shairport_settings.ignore_volume|default(True)}}
-    - require:
-      - cmd: audioplayer|build_shairportsync
+        name: "{{ shairportsync_settings.name|default('%h') }}"
+        password: "{{ shairportsync_settings.password|default('') }}"
+        ignore_volume: {{ shairportsync_settings.ignore_volume|default(True)}}
     - watch_in:
-      - service: audioplayer|shairport-sync
+      - service: audioplayer|shairportsync
   service.running:
     - name: "shairport-sync"
     - enable: True
-    - require:
-      - cmd: audioplayer|build_shairportsync
+    - onlyif: "test -f /lib/systemd/system/shairport-sync.service"
