@@ -31,7 +31,7 @@ server|set_device_tree_debug:
 server|set_device_tree_overlay:
   file.replace:
     - name: "/boot/config.txt"
-    - pattern: "^(.*)dtoverlay=hifiberry(.*)"
+    - pattern: "^(.*)dtoverlay={{ device_tree_overlay }}(.*)"
     - repl: "dtoverlay={{ device_tree_overlay }}"
     - append_if_not_found: True
     - not_found_content: "dtoverlay={{ device_tree_overlay }}"

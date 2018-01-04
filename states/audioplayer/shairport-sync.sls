@@ -7,6 +7,7 @@
 # 
 
 {% set shairportsync_build_path = salt['pillar.get']('audioplayer:shairportsync_build_path', "/tmp/shairport-sync") %}
+{% set shairport_settings = salt['pillar.get']('audioplayer:shairport_settings', {}) %}
 
 audioplayer|install_shairport-sync_dependencies:
   pkg.installed:
@@ -47,6 +48,11 @@ audioplayer|shairport-sync:
   file.managed:
     - name: "/etc/shairport-sync.conf"
     - source: "salt://audioplayer/files/shairport-sync.conf"
+    - template: jinja
+    - context:
+        name: "{{ shairport_settings.name|default('%h') }}"
+        password: "{{ shairport_settings.password|default('') }}"
+        ignore_volume: {{ shairport_settings.ignore_volume|default(True)}}
     - require:
       - cmd: audioplayer|build_shairportsync
     - watch_in:

@@ -8,4 +8,5 @@
 include:
   - .hardware
   - .raspbian
+  - .host
   - .base

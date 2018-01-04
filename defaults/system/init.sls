@@ -1,6 +1,8 @@
 
 system:
   
+  hostname: "raspberrypi"
+  
   # Install the latest version of all packages
   # This should be kept on False most of the time since upgrading the packages
   # might introduce new configuration files which will break the system
