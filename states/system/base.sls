@@ -28,3 +28,9 @@ system|install_utils:
       - "{{ util }}"
       {% endfor %}
 {% endif %}  
+
+system|restart:
+  module.wait:
+    - name: "system.reboot"
+    - bg: True
+    

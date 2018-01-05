@@ -62,7 +62,7 @@ audioplayer|shairportsync:
         name: "{{ shairportsync_settings.name|default('%h') }}"
         password: "{{ shairportsync_settings.password|default('') }}"
         ignore_volume: {{ shairportsync_settings.ignore_volume|default(True)}}
-    - watch_in:
+    - listen_in:
       - service: audioplayer|shairportsync
   service.running:
     - name: "shairport-sync"

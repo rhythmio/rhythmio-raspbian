@@ -6,7 +6,7 @@
 #
 
 include:
-  - .hardware
   - .raspbian
-  - .host
   - .base
+  - .hardware
+  - .network

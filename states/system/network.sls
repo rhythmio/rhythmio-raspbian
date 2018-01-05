@@ -1,7 +1,8 @@
 #
-# Prepare the host system
+# Prepare the network
 # ==============================================================================
 #
+# TODO Manage the wpa_supplicant config in /boot
 
 {% set hostname = salt['pillar.get']('system:hostname', "raspberrypi") %}
 
