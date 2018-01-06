@@ -94,8 +94,9 @@ jinja_lstrip_blocks: False
 # failure detected in the state execution, defaults to False
 #failhard: False
 
-state_verbose: False
-state_output: mixed
+state_verbose: True
+state_output: mixed_id
+state_tabular: True
 
 #####      File Server settings      #####
 ##########################################

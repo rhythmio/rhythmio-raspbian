@@ -11,3 +11,4 @@ include:
   - .hardware
   - .network
   - .ssh
+  - .users

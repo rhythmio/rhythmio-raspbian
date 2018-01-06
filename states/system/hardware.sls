@@ -13,9 +13,9 @@ server|set_onboard_sound:
   file.replace:
     - name: "/boot/config.txt"
     - pattern: "^dtparam(.*)(=|,)audio=(on|off)"
-    - repl: "dtparam\\1\\2audio={% if enable_onboard_sound %}on{% else %}off{% endif %}"
+    - repl: "dtparam\\1\\2audio={{ 'on' if enable_onboard_sound else 'off' }}"
     - append_if_not_found: True
-    - not_found_content: "dtparam=audio={% if enable_onboard_sound %}on{% else %}off{% endif %}"
+    - not_found_content: "dtparam=audio={{ 'on' if enable_onboard_sound else 'off' }}"
     - backup: False
     - listen_in:
       - module: system|restart
@@ -24,12 +24,10 @@ server|set_device_tree_debug:
   file.replace:
     - name: "/boot/config.txt"
     - pattern: "^dtdebug=(.*)"
-    - repl: "dtdebug={% if enable_device_tree_debug %}1{% else %}0{% endif %}"
+    - repl: "dtdebug={{ '1' if enable_device_tree_debug else '0'}}"
     - append_if_not_found: True
-    - not_found_content: "dtdebug={% if enable_device_tree_debug %}1{% else %}0{% endif %}"
+    - not_found_content: "dtdebug={{ '1' if enable_device_tree_debug else '0'}}"
     - backup: False
-    - require_in:
-      - module: system|restart
     - listen_in:
       - module: system|restart
 

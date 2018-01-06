@@ -1,7 +1,7 @@
 
-rpi3-raspbian-stretch:
+raspberrypi:
   host: raspberrypi
   user: pi 
   passwd: raspberry
   sudo: True
-  tty: True
+  tty: False   # Won't see errors when this is set

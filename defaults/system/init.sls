@@ -3,6 +3,18 @@ system:
   
   hostname: "raspberrypi"
   
+  # Enable to let ssh forward X11
+  enable_x11_forwarding: False
+  
+  # Let users authenticate using certificates
+  enable_public_key_authentication: True
+  
+  users:
+    pi:
+      enabled: True
+      groups: ['pi', 'adm', 'dialout', 'cdrom', 'sudo', 'audio', 'video', 'plugdev', 'games', 'users', 'input', 'netdev', 'spi', 'i2c', 'gpio']
+      password_hash: "$1$/GYKx56Z$Fr7EDiATmB8n3I.MyM5o90" # generate with `openssl passwd -1`
+  
   # Install the latest version of all packages
   # This should be kept on False most of the time since upgrading the packages
   # might introduce new configuration files which will break the system
