@@ -4,4 +4,4 @@ raspberrypi:
   user: pi 
   passwd: raspberry
   sudo: True
-  tty: False   # Won't see errors when this is set
+  tty: False # Errors are not propagated when this is true (ticket #44382)
