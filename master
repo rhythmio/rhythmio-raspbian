@@ -1,0 +1,164 @@
+
+##### Primary configuration settings #####
+##########################################
+
+# The root directory prepended to these options: pki_dir, cachedir,
+# sock_dir, log_file, autosign_file, autoreject_file, extension_modules,
+# key_logfile, pidfile:
+root_dir: ./
+
+# The path to the master's configuration file.
+conf_file: master
+
+# Directory used to store public key data:
+pki_dir: keys
+
+# Directory to store job and cache data:
+cachedir: cache/master
+
+# Set the default outputter used by the salt command. The default is "nested".
+output: highstate
+
+# To display a summary of the number of minions targeted, the number of
+# minions returned, and the number of minions that did not return, set the
+# cli_summary value to True. (False by default.)
+#
+#cli_summary: False
+
+# Set the directory used to hold unix sockets:
+sock_dir: tmp/
+
+
+#####     Salt-SSH Configuration     #####
+##########################################
+
+# Pass in an alternative location for the salt-ssh roster file
+roster_file: roster
+
+# The ssh password to log in with.
+#ssh_passwd: ''
+
+#The target system's ssh port number.
+#ssh_port: 22
+
+# Comma-separated list of ports to scan.
+#ssh_scan_ports: 22
+
+# Scanning socket timeout for salt-ssh.
+#ssh_scan_timeout: 0.01
+
+# Boolean to run command via sudo.
+#ssh_sudo: False
+
+# Number of seconds to wait for a response when establishing an SSH connection.
+#ssh_timeout: 60
+
+# The user to log in as.
+#ssh_user: root
+
+# The log file of the salt-ssh command:
+ssh_log_file: log/ssh
+
+# Pass in minion option overrides that will be inserted into the SHIM for
+# salt-ssh calls. The local minion config is not used for salt-ssh. Can be
+# overridden on a per-minion basis in the roster (`minion_opts`)
+#ssh_minion_opts:
+#  gpg_keydir: /root/gpg
+
+# Set this to True to default to using ~/.ssh/id_rsa for salt-ssh
+# authentication with minions
+#ssh_use_home_key: False
+
+# Set this to True to default salt-ssh to run with ``-o IdentitiesOnly=yes``.
+# This option is intended for situations where the ssh-agent offers many
+# different identities and allows ssh to ignore those identities and use the
+# only one specified in options.
+#ssh_identities_only: False
+
+# List-only nodegroups for salt-ssh. Each group must be formed as either a
+# comma-separated list, or a YAML list. This option is useful to group minions
+# into easy-to-target groups when using salt-ssh. These groups can then be
+# targeted with the normal -N argument to salt-ssh.
+#ssh_list_nodegroups: {}
+
+#####      State System settings     #####
+##########################################
+
+# The renderer to use on the minions to render the state data
+renderer: yaml_jinja
+
+jinja_trim_blocks: False
+jinja_lstrip_blocks: False
+
+# The failhard option tells the minions to stop immediately after the first
+# failure detected in the state execution, defaults to False
+#failhard: False
+
+state_verbose: True
+state_output: mixed_id
+state_tabular: True
+
+#####      File Server settings      #####
+##########################################
+
+file_roots:
+  base:
+    - states
+
+file_ignore_regex:
+  - '/\.svn($|/)'
+  - '/\.git($|/)'
+  - '/\.DS_Store'
+
+# A file glob (or list of file globs) that will be matched against the file
+# path before syncing the modules and states to the minions. This is similar
+# to file_ignore_regex above, but works on globs instead of regex. By default
+# nothing is ignored.
+#
+# file_ignore_glob:
+#  - '*.pyc'
+#  - '*/somefolder/*.bak'
+#  - '*.swp'
+
+#####         Pillar settings        #####
+##########################################
+
+pillar_roots:
+  base:
+    - settings
+    - machines
+
+#pillar_merge_lists: True
+
+# A master can cache pillars locally to bypass the expense of having to render them
+# for each minion on every request. This feature should only be enabled in cases
+# where pillar rendering time is known to be unsatisfactory and any attendant security
+# concerns about storing pillars in a master cache have been addressed.
+#
+# When enabling this feature, be certain to read through the additional ``pillar_cache_*``
+# configuration options to fully understand the tunable parameters and their implications.
+#
+# Note: setting ``pillar_cache: True`` has no effect on targeting Minions with Pillars.
+# See https://docs.saltstack.com/en/latest/topics/targeting/pillar.html
+#pillar_cache: False
+#pillar_cache_ttl: 3600
+#pillar_cache_backend: disk
+
+
+#####         Logging settings       #####
+##########################################
+
+# The location of the master log file
+log_file: log/master
+key_logfile: log/key
+
+# One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
+#
+# The following log levels are considered INSECURE and may log sensitive data:
+# ['garbage', 'trace', 'debug']
+
+# The level of messages to send to the console.
+log_level: warning
+
+# The level of messages to send to the log file.
+log_level_logfile: warning

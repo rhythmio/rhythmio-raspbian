@@ -1,0 +1,11 @@
+### OSX ###
+.DS_Store
+
+### VIM ###
+*.swp
+
+### SALT ###
+cache/*
+log/*
+keys/ssh/*.rsa
+keys/ssh/*.rsa.pub

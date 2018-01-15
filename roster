@@ -1,0 +1,7 @@
+
+raspberrypi:
+  host: raspberrypi
+  user: pi 
+  passwd: raspberry
+  sudo: True
+  tty: False # Errors are not propagated when this is true (ticket #44382)
