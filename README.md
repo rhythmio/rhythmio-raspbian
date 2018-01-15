@@ -31,7 +31,7 @@ This project was developed using [Raspberry Pi 2 B][rpi2] and
 [Raspberry PI 3 B][rpi3] models. Other PI models might work, too when they can 
 run the latest version of Raspian.
 
-An additional hardware component was a Hifiberry Digi+ board. But this board is
+An additional hardware component was a [Hifiberry Digi+][digi+] board. But this board is
 optional and the project can be configured to use a different board, the 
 standard audio out or audio over HDMI instead. 
 
@@ -66,3 +66,4 @@ Shutdown all machines in the roster
 [salt]: http://www.saltstack.com/
 [rpi2]: https://www.raspberrypi.org/products/raspberry-pi-2-model-b/
 [rpi3]: https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
+[digi+]: https://www.hifiberry.com/products/digiplus/
