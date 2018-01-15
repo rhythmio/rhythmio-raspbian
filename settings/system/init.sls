@@ -34,12 +34,11 @@ system:
     - powertop  # analyse estimated power consumtion
   
   # Disable or enable the onboard sound (requires reboot)
-  enable_onboard_sound: False
+  enable_onboard_sound: True
   
   # Enable the device tree debugging (requires reboot)
   enable_device_tree_debug: False
   
   # Setup the HAT overlays (requires reboot)
-  # FIXME Change this to support multiple overlays
-  device_tree_overlay: "hifiberry-digi"
-  #device_tree_overlay: "hifiberry-digi:i2c1=on"  
+  #device_tree_overlay: "hifiberry-digi"
+  device_tree_overlay: ""

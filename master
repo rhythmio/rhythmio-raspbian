@@ -125,8 +125,8 @@ file_ignore_regex:
 
 pillar_roots:
   base:
-    - defaults
     - settings
+    - machines
 
 #pillar_merge_lists: True
 
