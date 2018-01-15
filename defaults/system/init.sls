@@ -28,9 +28,10 @@ system:
   
   # Install these packages on the system
   required_utils:
-    - vim
-    - tree
-    - htop
+    - vim       # The real vim
+    - tree      # list directories as tree
+    - htop      # a better version than top
+    - powertop  # analyse estimated power consumtion
   
   # Disable or enable the onboard sound (requires reboot)
   enable_onboard_sound: False
